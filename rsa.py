@@ -11,13 +11,17 @@ def rsa(line):
         prints them out
     """
     num = int(line)
-    for i in range(2, num):
+    if num % 2 == 0:
+        print("{}={}*{}".format(num, int(num/2), 2))
+        return
+
+    for i in range(3, int(num/2), 2):
+        # print(i)
         if num % i == 0:
-            for x in range(2, int(i/2)):
+            for x in range(3, int(num/2), 2):
                 if (i % x == 0):
-                    break
-            print("{}={}*{}".format(num, int(num/i), i))
-            return
+                    print("{}={}*{}".format(num, int(num/i), i))
+                    return
 
 
 with open(argv[1]) as f:
