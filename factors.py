@@ -13,7 +13,7 @@ def factor(num):
     """
     if num % 2 == 0:
         i = 2
-        print("{}={}*{}".format(num, i, int(num/i)))
+        print("{}={}*{}".format(num, int(num/i), i))
     else:
         sq = math.sqrt(num)
         if sq % 2 == 0:
@@ -22,13 +22,13 @@ def factor(num):
         sq = int(sq) + 1
         for i in range(3, sq, +2):
             if num % i == 0:
-                print("{}={}*{}".format(num, i, int(num/i)))
+                print("{}={}*{}".format(num, int(num/i), i))
                 return
             if num % (sq + i) == 0:
-                print("{}={}*{}".format(num, sq + i, int(num/i)))
+                print("{}={}*{}".format(num, int(num/i), sq + i))
                 return
             if num % (sq - i) == 0:
-                print("{}={}*{}".format(num, sq - i, int(num/i)))
+                print("{}={}*{}".format(num, int(num/i), sq - 1))
                 return
 
 
