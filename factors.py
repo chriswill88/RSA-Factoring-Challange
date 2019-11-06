@@ -12,10 +12,13 @@ def factor(line=""):
         prints them out
     """
     num = int(line)
-    for i in range(2, num):
-        if num % i == 0:
-            print("{}={}*{}".format(num, i, int(num/i)))
-            return
+    if num % 2 == 0:
+        i = 2
+    else:
+        for i in range(3, num, 2):
+            if num % i == 0:
+                break
+    print("{}={}*{}".format(num, i, int(num/i)))
 
 
 with open(argv[1]) as f:
