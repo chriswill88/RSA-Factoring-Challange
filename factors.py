@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from sys import argv
+import math
 """ this factors modual gets the first two factors of any number """
 
 
@@ -10,23 +11,24 @@ def factor(num):
         a number and
         prints them out
     """
-    # num = int(line)
-    if num == 0:
-        i = 0
-        print("{}={}*{}".format(num, i, num))
-        return
-    elif num == 1 or num == -1:
-        i = 1
-        print("{}={}*{}".format(num, i, int(num/i)))
-
-    elif num % 2 == 0:
+    if num % 2 == 0:
         i = 2
         print("{}={}*{}".format(num, i, int(num/i)))
-
     else:
-        for i in range(3, int(num/2), 2):
+        sq = math.sqrt(num)
+        if sq % 2 == 0:
+            print("{}={}*{}".format(num, sq, int(num/sq)))
+            return
+        sq = int(sq) + 1
+        for i in range(3, sq, +2):
             if num % i == 0:
                 print("{}={}*{}".format(num, i, int(num/i)))
+                return
+            if num % (sq + i) == 0:
+                print("{}={}*{}".format(num, sq + i, int(num/i)))
+                return
+            if num % (sq - i) == 0:
+                print("{}={}*{}".format(num, sq - i, int(num/i)))
                 return
 
 
