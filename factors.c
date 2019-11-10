@@ -43,17 +43,17 @@ int main(int argc, char *argv[])
 			{
 				if (fmod(num, i) == 0)
 				{
-					printf("1st %.0Lf = %.0Lf * %.0Lf\n", num, num / i, i);
+					printf("%.0Lf=%.0Lf*%.0Lf\n", num, num / i, i);
 					break;
 				}
 				if (fmod(num, sq - i) == 0)
 				{
-					printf("second: %.0Lf = %.0Lf * %.0Lf\n", num, num / (sq - i), sq - i);
+					printf("%.0Lf=%.0Lf*%.0Lf\n", num, num / (sq - i), sq - i);
 					break;
 				}
 				if (fmod(num, sq + i) == 0)
 				{
-					printf("third: %.0Lf = %.0Lf * %.0Lf\n", num, num / (sq + i), sq - i);
+					printf("%.0Lf=%.0Lf*%.0Lf\n", num, num / (sq + i), sq - i);
 					break;
 				}
 			}

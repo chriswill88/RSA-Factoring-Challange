@@ -1,3 +1,2 @@
-#!/bin/bash
-
-./factors.py $BASH_ARGV
+#!/usr/bin/env bash
+./a.out $BASH_ARGV
