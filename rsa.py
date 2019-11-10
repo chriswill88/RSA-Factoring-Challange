@@ -1,45 +1,43 @@
 #!/usr/bin/python3
 from sys import argv
 import math
-""" this modual gets the first prime factors of any number """
+""" this factors modual gets the first two factors of any number """
 
 
-def rsa(line):
+def isPrime(num):
+    i = 3
+    if num % 2 == 0:
+        return False
+    while i * i <= num:
+        if num % i == 0:
+            return False
+        i += 2
+    return True
+
+
+def factor(num):
     """
-        This rsa function
-        gets the prime factors
-        of a number and
+        This factor function
+        gets the factors of
+        a number and
         prints them out
     """
-    num = int(line)
     if num % 2 == 0:
-        print("{}={}*{}".format(num, int(num/2), 2))
-        return
-
-    sq = int(math.sqrt(num))
-    print(sq)
-
-    if sq % 2 != 0:
-        sq += 1
-
-    HalfSq = int(sq/2)  # cuts sq in half
-
-    for i in range(sq, int(num/2), 2):
-        SqRootIt = i - sq  # iterator from sqaure root
-        # print("n = ", n)
-        if num % i == 0:
-            for x in range(3, i, 2):
-                if i % x == 0:
+        i = 2
+        print("{}={}*{}".format(num, int(num/i), i))
+    else:
+        sq = math.sqrt(num)
+        if sq % 1 == 0:
+            print("{}={}*{}".format(num, sq, int(num/sq)))
+            return
+        sq = int(sq) + 1
+        for i in range(3, sq, +2):
+            if num % i == 0:
+                if isPrime(i):
                     print("{}={}*{}".format(num, int(num/i), i))
                     return
-        if num % SqRootIt == 0:  # currently implimenting square root method
-            for  
-
-
-
-        
 
 
 with open(argv[1]) as f:
     for line in f:
-        rsa(line)
+        factor(int(line))
