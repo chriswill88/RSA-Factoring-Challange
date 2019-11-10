@@ -3,33 +3,53 @@
 #include <stdlib.h>
 /*""" this factors modual gets the first two factors of any number """*/
 
-
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-    char *ar = NULL, *ptr;
+    char *ar = NULL, *ptr = "\0";
     size_t len = 0;
     FILE *fd;
-    long double num, sq, i;
+    int r;
+    long double num = 0, sq, i;
 
-    printf("%s\n", argv[1]);
+    //printf("%s\n", argv[1]);
     fd = fopen(argv[1], "r");
-    if (fd < 0)
-        return;
-    while (getline(&ar, &len, fd) != -1)
+    if (fd == NULL || argc < 1)
+        return (-1);
+    while ((r = getline(&ar, &len, fd)) != -1)
     {
-        printf("%s", ar);
-        num = strtol(ar, &ptr, 10);
-        printf("%Lf\n", num);
+        printf("string ver -> %s\n", ar);
+        num = strtold(ar, &ptr);
+        printf("num ver --> %Lf\n", strtold(ar, &ptr));
         if (fmodl(num,2) == 0)
-            printf("%Lf = %Lf * %d\n", num, num/2, 2);
+            printf("%.0Lf = %.0Lf * %d\n", num, num/2, 2);
         else
         {
-            for (i = 3; i * i <= num; i += 2)
+            sq = sqrtl(num);
+
+            //printf("the sq == %Lf\n", sq);
+            //printf("the remainder = %Lf\n", fmodl(sq, 1));
+            sq -= fmodl(sq, 1);
+            if (fmodl(sq, 2))
+                sq += 1;
+            //printf("%Lf\n", sq);
+            fflush(stdout);
+            for (i = 3; i <= sq; i += 2)
             {
-                printf("%Lf, %Lf", i, num);
                 if (fmod(num,i) == 0)
-                    printf("%Lf = %Lf * %Lf\n", num, num/i, i);
+                {
+                    printf("%.0Lf = %.0Lf * %.0Lf\n", num, num/i, i);
                     break;
+                }
+                if (fmod(num, sq - i) == 0)
+                {
+                    printf("%.0Lf = %.0Lf * %.0Lf\n", num, num/(sq - i), sq - i);
+                    break;
+                }
+                if (fmod(num, sq + i) == 0)
+                {
+                    printf("%.0Lf = %.0Lf * %.0Lf\n", num, num/(sq + i), sq - i);
+                    break;
+                }
             }
         }
         
@@ -37,6 +57,7 @@ void main(int argc, char *argv[])
     fclose(fd);
     if (ar)
         free(ar);
+    return (0);
 }
 /**
     if num % 2 == 0:
