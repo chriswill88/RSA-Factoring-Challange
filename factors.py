@@ -25,10 +25,10 @@ def factor(num):
                 print("{}={}*{}".format(num, int(num/i), i))
                 return
             if num % (sq + i) == 0:
-                print("{}={}*{}".format(num, int(num/i), sq + i))
+                print("{}={}*{}".format(num, sq + i, int(num/(sq + i))))
                 return
             if num % (sq - i) == 0:
-                print("{}={}*{}".format(num, int(num/i), sq - 1))
+                print("{}={}*{}".format(num, sq - 1, int(num/(sq - i))))
                 return
 
 
