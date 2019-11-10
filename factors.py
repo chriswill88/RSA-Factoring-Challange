@@ -15,11 +15,7 @@ def factor(num):
         i = 2
         print("{}={}*{}".format(num, int(num/i), i))
     else:
-        sq = math.sqrt(num)
-        if sq % 2 == 0:
-            print("{}={}*{}".format(num, sq, int(num/sq)))
-            return
-        sq = int(sq) + 1
+        sq = int(math.sqrt(num)) + 1
         for i in range(3, sq, +2):
             if num % i == 0:
                 print("{}={}*{}".format(num, int(num/i), i))
